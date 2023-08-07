@@ -24,7 +24,7 @@ class ControllerLogin extends Controller
             'password' => $request->password
         ];
         if (Auth::attempt($data)) {
-            return dd('Dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return redirect()->route('login')->with('gagal', 'Email atau password salah');
         }

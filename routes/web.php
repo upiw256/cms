@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerDashboard;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ Route::get('/', function () {
 });
 Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
 Route::post('/login-proses', [ControllerLogin::class, 'login_proses'])->name('login-proses');
+Route::get('/logout', [ControllerDashboard::class, 'logout'])->name('logout');
 
-
-Route::get('/dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
+    Route::get('/dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
+    Route::get('/post', [ControllerDashboard::class, 'post'])->name('post');
+});
