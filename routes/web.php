@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerLogin;
+use App\Http\Controllers\ControllerDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
 Route::post('/login-proses', [ControllerLogin::class, 'login_proses'])->name('login-proses');
+
+
+Route::get('/dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
