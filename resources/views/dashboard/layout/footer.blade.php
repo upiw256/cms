@@ -28,12 +28,14 @@
             }
 
             function deleteImage() {
-                const imagePreview = document.getElementById('imagePreview');
-                if (uploadedImage) {
-                    imagePreview.removeChild(uploadedImage);
-                    uploadedImage = null;
+                var imgElement = document.querySelector('#imagePreview img');
+                if (imgElement) {
+                    imgElement.parentNode.removeChild(imgElement);
                 }
-                // imagePreview.innerHTML = 'No image selected.';
+                // var button = document.getElementById('button');
+                // if (button) {
+                //     button.style.display = 'none';
+                // }
             }
         </script>
     </body>
