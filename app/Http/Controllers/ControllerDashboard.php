@@ -18,6 +18,6 @@ class ControllerDashboard extends Controller
     }
     public function post()
     {
-        return view('');
+        return view('dashboard.post',['active' => 'post']);
     }
 }

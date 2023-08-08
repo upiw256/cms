@@ -1,5 +1,5 @@
 @extends('dashboard.layout.content')
 
 @section('container')
-    <h1>Home</h1>
+    <h1>Post</h1>
 @endsection
