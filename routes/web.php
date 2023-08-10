@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerDashboard;
+use App\Http\Controllers\ControllerPost;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::get('/logout', [ControllerDashboard::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/dashboard', [ControllerDashboard::class, 'index'])->name('dashboard');
-    Route::get('/post', [ControllerDashboard::class, 'post'])->name('post');
+    Route::get('/post', [ControllerPost::class, 'index'])->name('post');
 });
+Route::post('/post-proses', [ControllerPost::class, 'post_proses'])->name('post-proses');

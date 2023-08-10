@@ -9,15 +9,15 @@
     <div class="bg-white rounded shadow-inherit p-3" x-data="{ showTable: true, showForm: false }">
         <div class="font-sans">
             <button class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300" @click="showTable = !showTable; showForm = !showForm"><i class="fa-regular fa-square-plus"></i> Add Post</button>
-            <form x-show="showForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" enctype="multipart/form-data">
+            <form x-show="showForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('post-proses')}}" enctype="multipart/form-data">
                 @csrf
-                <input type="text" id="name" name="name" class="mb-3 border-2 w-full h-10 p-2 border-gray-300 rounded-md" placeholder="Judul Post">
+                <input type="text" id="name" name="judul" class="mb-3 border-2 w-full h-10 p-2 border-gray-300 rounded-md" placeholder="Judul Post">
                 
                 <div class="flex-1 items-center justify-center p-8" >
                     <label for="image" class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue-400 rounded-lg shadow-lg tracking-wide uppercase border border-blue-400 cursor-pointer hover:bg-blue-400 hover:text-white">
                         <i class="fa-regular fa-image fa-xl"></i>
                         <span class="mt-2 text-base leading-normal">Pilih gambar</span>
-                        <input name="image" type="file" id="image" class="hidden" accept="image/*">
+                        <input name="image" type="file" id="image" accept="image/*">
                     </label>
                 </div>                               
                 <div id="imagePreview" class="my-3"></div>
