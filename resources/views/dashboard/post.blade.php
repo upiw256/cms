@@ -17,11 +17,11 @@
                     <label for="image" class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue-400 rounded-lg shadow-lg tracking-wide uppercase border border-blue-400 cursor-pointer hover:bg-blue-400 hover:text-white">
                         <i class="fa-regular fa-image fa-xl"></i>
                         <span class="mt-2 text-base leading-normal">Pilih gambar</span>
-                        <input name="image" type="file" id="image" accept="image/*">
+                        <input name="image" type="file" class="hidden" id="image" accept="image/*">
                     </label>
                 </div>                               
                 <div id="imagePreview" class="my-3"></div>
-                <button id="button"  type="button" onclick="deleteImage()" class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300 my-3">Hapus Gambar</button>
+                {{-- <button id="button"  type="button" onclick="deleteImage()" class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300 my-3">Hapus Gambar</button> --}}
                 <textarea name="isi" id="editor" cols="30" class="h-56"></textarea>
                 <input type="submit" value="Posting" class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300 mt-3 w-full cursor-pointer">
             </form>

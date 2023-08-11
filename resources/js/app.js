@@ -1,5 +1,7 @@
 import "./bootstrap";
 
 import Swal from "sweetalert2";
-
-window.Swal = Swal;
+Window.Swal = Swal;
+if (message) {
+    Swal.fire(message);
+}

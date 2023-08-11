@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite('resources/css/app.css') --}}
+    {{-- {{@dd(@vite)}} --}}
+    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
     <title>SMAN 1 Margaasih</title>
 </head>
 <body>
@@ -36,9 +38,10 @@
           </form>
         </div>
       </div>
+      {{-- @include('sweetalert::alert') --}}
       @if($message = Session::get('gagal'))
           <script>
-            Swal.fire('{{$message}}')
+            var message = @json($message);
           </script>
       @endif
 </body>
