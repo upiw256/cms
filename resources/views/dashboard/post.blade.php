@@ -7,6 +7,15 @@
     </div>
     
     <div class="bg-white rounded shadow-inherit p-3" x-data="{ showTable: true, showForm: false }">
+      @if ($errors->any())
+          <div id="alert" class="fixed top-4 right-4 z-50 transition-opacity duration-500 opacity-100">
+                  @foreach ($errors->all() as $error)
+                  <div  class="bg-red-500 text-white p-4 rounded shadow-lg mb-3 ">
+                      {{ $error }}
+                  </div>
+                  @endforeach
+          </div>
+      @endif
         <div class="font-sans">
             <button class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300" @click="showTable = !showTable; showForm = !showForm"><i class="fa-regular fa-square-plus"></i> Add Post</button>
             <form x-show="showForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('post-proses')}}" enctype="multipart/form-data">

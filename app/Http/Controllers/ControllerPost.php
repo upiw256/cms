@@ -14,6 +14,11 @@ class ControllerPost extends Controller
     }
     public function post_proses(Request $request)
     {
+        $validatedData = $request->validate([
+            'judul' => ['required', 'max:255'],
+            'isi' => ['required'],
+            'image' => ['required','mimes:jpg, jpeg, png, bmp, gif, svg','max:1024'],
+        ]);
         $now = Carbon::now();
         $uuid = Uuid::uuid4();
         $data = [
