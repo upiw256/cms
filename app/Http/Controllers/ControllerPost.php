@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
+use \Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use App\Models\ModelPost;
 
 class ControllerPost extends Controller
 {
@@ -21,14 +24,26 @@ class ControllerPost extends Controller
         ]);
         $now = Carbon::now();
         $uuid = Uuid::uuid4();
+        $judul = $request->judul;
+        $isi = $request->isi;
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $judul)));
+        $image = $request->file('image');
+        $filename= date('ms').$image->getClientOriginalName();
+        $path = 'upload/'.$filename;
+
+        Storage::disk('public')->put($path,file_get_contents($image));
+
         $data = [
             'id' => $uuid,
-            'judul' => $request->input('judul'),
-            'image' => $request->file('image'),
-            'isi' => $request->input('isi'),
+            'title'=>$judul,
+            'img'=>$filename,
+            'isi'=> $isi,
+            'slug'=> $slug,
             'created_at' => $now,
             'updated_at' => $now,
         ];
-        dd($data);
+
+        ModelPost::create($data);
+        return redirect()->route('admin.post');
     }
 }
