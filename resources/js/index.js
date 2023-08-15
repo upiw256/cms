@@ -4,17 +4,20 @@ Window.MaterialIcon = MaterialIcon;
 
 document.getElementById("menu").addEventListener("click", Menu);
 
-let name = document.getElementById("menu");
+var name = document.getElementById("menu");
 function Menu() {
     let list = document.querySelector("ul");
     name === "menu"
         ? ((name = "close"),
           list.classList.add("top-[80px]"),
           list.classList.add("opacity-100"),
-          list.classList.add("h-screen"))
+          list.classList.add("h-screen"),
+          (document.getElementById("menu").innerHTML = "menu_open"))
         : ((name = "menu"),
           list.classList.remove("top-[80px]"),
-          list.classList.remove("h-screen"));
+          list.classList.remove("h-screen"),
+          console.log(name.textContent),
+          (document.getElementById("menu").innerHTML = "menu"));
 }
 
 const carousel = document.querySelector(".carousel");
