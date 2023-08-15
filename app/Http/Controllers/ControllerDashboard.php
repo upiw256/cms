@@ -16,8 +16,4 @@ class ControllerDashboard extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
-    public function post()
-    {
-        return view('dashboard.post',['active' => 'post']);
-    }
 }
