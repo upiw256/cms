@@ -10,41 +10,38 @@ function Menu() {
     name === "menu"
         ? ((name = "close"),
           list.classList.add("top-[80px]"),
-          list.classList.add("opacity-100"))
-        : ((name = "menu"), list.classList.remove("top-[80px]"));
+          list.classList.add("opacity-100"),
+          list.classList.add("h-screen"))
+        : ((name = "menu"),
+          list.classList.remove("top-[80px]"),
+          list.classList.remove("h-screen"));
 }
 
-document.getElementById("next").addEventListener("click", next);
-document.getElementById("prev").addEventListener("click", prev);
-var currendSlideID = 1;
-var slideElement = document.getElementById("slider");
-var totalSlides = slideElement.childElementCount;
-function next() {
-    console.log("next halaman " + currendSlideID);
-    console.log("next total " + totalSlides);
-    if (currendSlideID < totalSlides) {
-        currendSlideID++;
-        showSlide();
-    }
-}
+const carousel = document.querySelector(".carousel");
+const carouselItems = document.querySelectorAll(".carousel-item");
+let currentIndex = 0;
 
-function prev() {
-    console.log("prev " + currendSlideID);
-    if (currendSlideID > 2) {
-        currendSlideID--;
-        showSlide();
-    }
-}
+document.getElementById("next").addEventListener("click", () => {
+    carouselItems[currentIndex].classList.add("hidden");
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    carouselItems[currentIndex].classList.remove("hidden");
+    // moveCarousel();
+});
 
-function showSlide() {
-    var slides = document.getElementById("slider").getElementsByTagName("li");
-    // console.log(slides);
-    for (let index = 0; index < totalSlides; index++) {
-        const element = slides[index];
-        if (currendSlideID === index + 1) {
-            element.classList.remove("hidden");
-        } else {
-            element.classList.add("hidden");
-        }
-    }
+document.getElementById("prev").addEventListener("click", () => {
+    carouselItems[currentIndex].classList.add("hidden");
+    currentIndex =
+        (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+    carouselItems[currentIndex].classList.remove("hidden");
+    // moveCarousel();
+});
+
+function moveCarousel() {
+    // carousel.style.transform = `translateX(-${currentIndex * 500}px)`;
+    setInterval(() => {
+        carouselItems[currentIndex].classList.add("hidden");
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        carouselItems[currentIndex].classList.remove("hidden");
+        moveCarousel();
+    }, 2000);
 }
