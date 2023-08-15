@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerIndex;
 use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerDashboard;
 use Illuminate\Routing\RouteGroup;
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [ControllerIndex::class, 'index'])->name('home');
 Route::get('/login', [ControllerLogin::class, 'index'])->name('login');
 Route::post('/login-proses', [ControllerLogin::class, 'login_proses'])->name('login-proses');
 Route::get('/logout', [ControllerDashboard::class, 'logout'])->name('logout');
