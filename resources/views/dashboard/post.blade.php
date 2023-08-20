@@ -42,19 +42,21 @@
                             <th scope="col" class=" px-6 py-4">#</th>
                             <th scope="col" class=" px-6 py-4">Judul</th>
                             <th scope="col" class=" px-6 py-4">isi</th>
-                            <th scope="col" class=" px-6 py-4">cover</th>
+                            <th scope="col" class=" px-6 py-4">thumbnail</th>
+                            <th scope="col" class=" px-6 py-4">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {{$n=1}}
+                          
                           @foreach($data as $item)
                           <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap  px-6 py-4 font-medium">{{$n++}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4 font-medium">{{$no++}}</td>
                             <td class="whitespace-nowrap  px-6 py-4">{{$item->title}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4">{{$item->isi}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4">
-                              <img src="{{$item->title}}" alt="" srcset="">
+                            <td class="whitespace-nowrap  px-6 py-4">{!! html_entity_decode($item->isi) !!}</td>
+                            <td class="whitespace-nowrap  px-6 py-4 h-14 w-14">
+                              <img src="{{ asset('storage/upload/'.$item->img) }}" alt="{{$item->img}}" >
                             </td>
+                            <td class="whitespace-nowrap  px-6 py-4"><i class="fa-solid fa-pen-to-square"></i> Edit | Hapus</td>
                           </tr>
                           {{ $page->links() }}
                           @endforeach

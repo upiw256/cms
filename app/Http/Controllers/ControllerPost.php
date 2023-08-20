@@ -15,7 +15,8 @@ class ControllerPost extends Controller
     {
         $data = ModelPost::all();
         $page = ModelPost::paginate(10);
-        return view('dashboard.post', ['active' => 'post', 'data' => $data, 'page' => $page]);
+        $no = 1;
+        return view('dashboard.post', ['active' => 'post', 'data' => $data, 'page' => $page, 'no' => $no]);
     }
     public function post_proses(Request $request)
     {
@@ -34,7 +35,7 @@ class ControllerPost extends Controller
         $filename = date('ms-') . str_replace(' ', '', $image->getClientOriginalName());
         $path = 'upload/' . $filename;
 
-        // Storage::disk('public')->put($path, file_get_contents($image));
+        Storage::disk('public')->put($path, file_get_contents($image));
 
         $data = [
             'id' => $uuid,
@@ -46,8 +47,8 @@ class ControllerPost extends Controller
             'updated_at' => $now,
         ];
 
-        $save = ModelPost::create($data);
-        dd($save);
+        ModelPost::create($data);
+        // dd($save);
         return redirect()->route('admin.post');
     }
 }
