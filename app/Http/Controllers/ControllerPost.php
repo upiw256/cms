@@ -13,37 +13,41 @@ class ControllerPost extends Controller
 {
     public function index()
     {
-        return view('dashboard.post', ['active' => 'post']);
+        $data = ModelPost::all();
+        $page = ModelPost::paginate(10);
+        return view('dashboard.post', ['active' => 'post', 'data' => $data, 'page' => $page]);
     }
     public function post_proses(Request $request)
     {
-        $validatedData = $request->validate([
-            'judul' => ['required', 'max:255'],
+        $request->validate([
+            'title' => ['required', 'max:255', 'unique:post'],
             'isi' => ['required'],
-            'image' => ['required','mimes:jpg, jpeg, png, bmp, gif, svg','max:1024'],
+            'image' => ['required', 'mimes:jpg, jpeg, png, bmp, gif, svg', 'max:1024'],
         ]);
+
         $now = Carbon::now();
         $uuid = Uuid::uuid4();
-        $judul = $request->judul;
+        $judul = $request->title;
         $isi = $request->isi;
         $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $judul)));
         $image = $request->file('image');
-        $filename= date('ms').$image->getClientOriginalName();
-        $path = 'upload/'.$filename;
+        $filename = date('ms-') . str_replace(' ', '', $image->getClientOriginalName());
+        $path = 'upload/' . $filename;
 
-        Storage::disk('public')->put($path,file_get_contents($image));
+        // Storage::disk('public')->put($path, file_get_contents($image));
 
         $data = [
             'id' => $uuid,
-            'title'=>$judul,
-            'img'=>$filename,
-            'isi'=> $isi,
-            'slug'=> $slug,
+            'title' => $judul,
+            'img' => $filename,
+            'isi' => $isi,
+            'slug' => $slug,
             'created_at' => $now,
             'updated_at' => $now,
         ];
 
-        ModelPost::create($data);
+        $save = ModelPost::create($data);
+        dd($save);
         return redirect()->route('admin.post');
     }
 }

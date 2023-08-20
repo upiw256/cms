@@ -20,7 +20,7 @@
             <button class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300" @click="showTable = !showTable; showForm = !showForm"><i class="fa-regular fa-square-plus"></i> Add Post</button>
             <form x-show="showForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route('post-proses')}}" enctype="multipart/form-data">
                 @csrf
-                <input type="text" id="name" name="judul" class="mb-3 border-2 w-full h-10 p-2 border-gray-300 rounded-md" placeholder="Judul Post">
+                <input type="text" id="name" name="title" class="mb-3 border-2 w-full h-10 p-2 border-gray-300 rounded-md" placeholder="Judul Post">
                 
                 <div class="flex-1 items-center justify-center p-8" >
                     <label for="image" class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue-400 rounded-lg shadow-lg tracking-wide uppercase border border-blue-400 cursor-pointer hover:bg-blue-400 hover:text-white">
@@ -46,18 +46,18 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {{$n=1}}
+                          @foreach($data as $item)
                           <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap  px-6 py-4 font-medium">1</td>
-                            <td class="whitespace-nowrap  px-6 py-4">Mark</td>
-                            <td class="whitespace-nowrap  px-6 py-4">Otto</td>
-                            <td class="whitespace-nowrap  px-6 py-4">@mdo</td>
+                            <td class="whitespace-nowrap  px-6 py-4 font-medium">{{$n++}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4">{{$item->title}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4">{{$item->isi}}</td>
+                            <td class="whitespace-nowrap  px-6 py-4">
+                              <img src="{{$item->title}}" alt="" srcset="">
+                            </td>
                           </tr>
-                          <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap  px-6 py-4 font-medium">2</td>
-                            <td class="whitespace-nowrap  px-6 py-4 ">Jacob</td>
-                            <td class="whitespace-nowrap  px-6 py-4">Thornton</td>
-                            <td class="whitespace-nowrap  px-6 py-4">@fat</td>
-                          </tr>
+                          {{ $page->links() }}
+                          @endforeach
                         </tbody>
                     </table>
             </div>
