@@ -13,17 +13,17 @@ class ControllerPost extends Controller
 {
     public function index()
     {
-        $data = ModelPost::all();
-        $page = ModelPost::paginate(10);
+        // $data = ModelPost::all();
+        $page = ModelPost::paginate(5);
         $no = 1;
-        return view('dashboard.post', ['active' => 'post', 'data' => $data, 'page' => $page, 'no' => $no]);
+        return view('dashboard.post', ['active' => 'post',  'page' => $page, 'no' => $no]);
     }
     public function post_proses(Request $request)
     {
         $request->validate([
             'title' => ['required', 'max:255', 'unique:post'],
             'isi' => ['required'],
-            'image' => ['required', 'mimes:jpg, jpeg, png, bmp, gif, svg', 'max:1024'],
+            'image.*' => ['required', 'mimes:jpg, jpeg, png, bmp, gif, svg', 'max:1024'],
         ]);
 
         $now = Carbon::now();

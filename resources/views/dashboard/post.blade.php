@@ -35,7 +35,7 @@
                 <input type="submit" value="Posting" class="bg-blue-400 p-3 rounded-lg text-white hover:bg-blue-300 mt-3 w-full cursor-pointer">
             </form>
             <div class="flex flex-col mt-2">
-                    <table class="text-center text-sm font-light" x-show="showTable">
+                    <table class="text-center text-sm font-light mb-3" x-show="showTable">
                         <thead
                           class="border-b bg-neutral-50 font-medium dark:border-neutral-500 dark:text-neutral-800">
                           <tr>
@@ -48,20 +48,27 @@
                         </thead>
                         <tbody>
                           
-                          @foreach($data as $item)
+                          @foreach($page as $item)
                           <tr class="border-b dark:border-neutral-500">
                             <td class="whitespace-nowrap  px-6 py-4 font-medium">{{$no++}}</td>
                             <td class="whitespace-nowrap  px-6 py-4">{{$item->title}}</td>
-                            <td class="whitespace-nowrap  px-6 py-4">{!! html_entity_decode($item->isi) !!}</td>
+                            <td class="whitespace-nowrap  px-6 py-4">{!! html_entity_decode(Str::limit ($item->isi, 50)) !!}</td>
                             <td class="whitespace-nowrap  px-6 py-4 h-14 w-14">
                               <img src="{{ asset('storage/upload/'.$item->img) }}" alt="{{$item->img}}" >
                             </td>
-                            <td class="whitespace-nowrap  px-6 py-4"><i class="fa-solid fa-pen-to-square"></i> Edit | Hapus</td>
+                            <td class="whitespace-nowrap  px-6 py-4">
+                              <button class="bg-yellow-600 p-3 rounded text-gray-100 hover:bg-yellow-500 w-20">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                              </button>
+                              
+                              <button class="bg-red-600 p-3 rounded text-gray-100 hover:bg-red-500 w-20">
+                                <i class="fa-solid fa-trash"></i> Hapus</td>
+                              </button>
                           </tr>
-                          {{ $page->links() }}
                           @endforeach
                         </tbody>
-                    </table>
+                      </table>
+                      {{ $page->links('./vendor/pagination/tailwind') }}
             </div>
         </div>
     </div>
