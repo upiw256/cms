@@ -20,7 +20,7 @@
                 </span>
             </div>
         </div>
-        <ul class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-blue-400 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-80 top-[-400px] transition-all ease-in-out duration-500">
+        <ul class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-blue-400 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-90 top-[-400px] transition-all ease-in-out duration-500">
             <li class="mx-4 my-6 md:my-0">
                 <a href="#" class="text-xl hover:text-gray-400 duration-500 p-3 rounded">Home</a>
             </li>
@@ -32,44 +32,73 @@
             </li>
         </ul>
     </nav>
-    {{--  --}}
-    <section class="">
-        <div class="relative">
-            <ul class="slider carousel">
-                <li class="h-[50vh] relative carousel-item">
-                    <img class="h-full object-cover w-full" src="https://picsum.photos/720/720?random=1" alt="image">
-                    <div class="absolute top-0 left-0 h-full w-full flex">
-                        <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
-                    </div>
-                </li>
-                <li class="h-[50vh] relative hidden carousel-item">
-                    <img class="h-full object-cover w-full" src="https://picsum.photos/720/720?random=2" alt="image">
-                    <div class="absolute top-0 left-0 h-full w-full flex">
-                        <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
-                    </div>
-                </li>
-                <li class="h-[50vh] relative hidden carousel-item">
-                    <img class="h-full object-cover w-full" src="https://picsum.photos/720/720?random=3" alt="image">
-                    <div class="absolute top-0 left-0 h-full w-full flex">
-                        <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
-                    </div>
-                </li>
-            </ul>
-            <div class="absolute px-5 flex w-full h-full top-0 left-0">
-                <div class="my-auto w-full flex justify-between">
-                    <div class="bg-white p-5 rounded-full bg-opacity-80 cursor-pointer" id="prev">
-                        <span class="material-icons">
-                            arrow_back_ios
-                        </span>
-                    </div>
-                    <div class="bg-white p-5 rounded-full bg-opacity-80 cursor-pointer" id="next">
-                        <span class="material-icons">
-                            arrow_forward_ios
-                        </span>
+    {{-- IMAGE --}}
+        <section class="bg-slate-300 h-full-20">
+                <div class="relative md:w-4/5 w-full mx-auto">
+                    <ul class="slider carousel ">
+                        <li class="h-[30vh] relative carousel-item ">
+                            <img class="h-full object-cover w-full" src="https://picsum.photos/720/720?random=1" alt="image">
+                            <div class="absolute top-0 left-0 h-full w-full flex">
+                                <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
+                            </div>
+                        </li>
+                        <li class="h-[30vh] relative hidden carousel-item">
+                            <img class="h-full object-cover w-full rounded-xl" src="https://picsum.photos/720/720?random=2" alt="image">
+                            <div class="absolute top-0 left-0 h-full w-full flex">
+                                <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
+                            </div>
+                        </li>
+                        <li class="h-[30vh] relative hidden carousel-item">
+                            <img class="h-full object-cover w-full rounded-xl" src="https://picsum.photos/720/720?random=3" alt="image">
+                            <div class="absolute top-0 left-0 h-full w-full flex">
+                                <h2 class="text-4xl font-bold text-white my-auto w-full text-center px-20">Keterangan image</h2>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="absolute px-5 flex w-full h-full top-0 left-0">
+                        <div class="my-auto w-full flex justify-between">
+                            <div class="bg-white p-5 rounded-full bg-opacity-80 cursor-pointer" id="prev">
+                                <span class="material-icons">
+                                    arrow_back_ios
+                                </span>
+                            </div>
+                            <div class="bg-white p-5 rounded-full bg-opacity-80 cursor-pointer" id="next">
+                                <span class="material-icons">
+                                    arrow_forward_ios
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            {{-- content --}}
+            
+            <h1 class="text-2xl font-bold w-full text-center text-white mb-3 text-whiteh-20">
+                <div class="border-dashed border-2 border-white mt-4 mx-4"></div>
+                New Update
+                <div class="border-dashed border-2 border-white mt-4 mx-4"></div>
+            </h1>
+            
+            <div class="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 mx-3 text-gray-800">
+                
+                <div class="bg-white rounded-xl p-3 relative">
+                    <img class="h-20 object-cover w-28 rounded-xl absolute top-1 right-1" src="https://picsum.photos/720/720?random=3" alt="image">
+                    <h1 class="text-xl font-extrabold">Judul</h1>
+                    <p class="text-sm">Author: <b>Luthfi</b></p>
+                    <p class="text-xs font-thin italic mb-3">Tangga: {{ now()->toDateTimeString () }}</p>
+                    <div class="border-dashed border-2 border-gray-400 my-2"></div>
+                    <p class="mb-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat autem optio expedita obcaecati vel adipisci esse officia necessitatibus ratione quo nam magnam fuga a quisquam excepturi, porro molestiae delectus quibusdam?</p>
+                    <a href="#" class="absolute right-3 bottom-1 text-right bg-blue-900 text-white p-2 rounded-lg hover:bg-blue-400 mt-3">Read more...</a>
+                </div>
+                <div class="bg-white rounded-xl p-3 relative">
+                    <img class="h-20 object-cover w-28 rounded-xl absolute top-1 right-1" src="https://picsum.photos/720/720?random=3" alt="image">
+                    <h1 class="text-xl font-extrabold">Judul</h1>
+                    <p class="text-sm">Author: <b>Luthfi</b></p>
+                    <p class="text-xs font-thin italic mb-3">Tangga: {{ now()->toDateTimeString () }}</p>
+                    <div class="border-dashed border-2 border-gray-400 my-2"></div>
+                    <p class="mb-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat autem optio expedita obcaecati vel adipisci esse officia necessitatibus ratione quo nam magnam fuga a quisquam excepturi, porro molestiae delectus quibusdam?</p>
+                    <a href="#" class="absolute right-3 bottom-1 text-right bg-blue-900 text-white p-2 rounded-lg hover:bg-blue-400 mt-3">Read more...</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 </body>
 </html>

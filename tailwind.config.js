@@ -6,7 +6,11 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            spacing: {
+                "full-20": "calc(100vh - 5rem)",
+            },
+        },
     },
     plugins: [],
 };

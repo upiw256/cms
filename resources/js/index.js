@@ -11,11 +11,11 @@ function Menu() {
         ? ((name = "close"),
           list.classList.add("top-[80px]"),
           list.classList.add("opacity-100"),
-          list.classList.add("h-screen"),
+          list.classList.add("h-full-20"),
           (document.getElementById("menu").innerHTML = "menu_open"))
         : ((name = "menu"),
           list.classList.remove("top-[80px]"),
-          list.classList.remove("h-screen"),
+          list.classList.remove("h-full-20"),
           console.log(name.textContent),
           (document.getElementById("menu").innerHTML = "menu"));
 }
